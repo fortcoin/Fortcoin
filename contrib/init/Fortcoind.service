@@ -1,0 +1,26 @@
+[Unit]
+Description=FORT's distributed currency daemon
+After=network.target
+
+[Service]
+User=Fortcoin
+Group=Fortcoin
+
+Type=forking
+PIDFile=/var/lib/Fortcoind/Fortcoind.pid
+
+ExecStart=/usr/bin/Fortcoind -daemon -pid=/var/lib/Fortcoind/Fortcoind.pid \
+          -conf=/etc/Fortcoin/Fortcoin.conf -datadir=/var/lib/Fortcoind
+
+ExecStop=-/usr/bin/Fortcoin-cli -conf=/etc/Fortcoin/Fortcoin.conf \
+         -datadir=/var/lib/Fortcoind stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
