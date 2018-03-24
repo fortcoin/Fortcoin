@@ -106,7 +106,7 @@ public:
         nTargetTimespan = 24 * 60 * 60; // Fortcoin: 1 day
         nTargetSpacing = 60; // Fortcoin: 1 minutes
         nMaxReorganizationDepth = 100;
-        nLastPOWBlock = 215000;
+        nLastPOWBlock = 215000000;
         nMaturity = 100;
         nMasternodeCountDrift = 20;
         nModifierUpdateBlock = 510;
